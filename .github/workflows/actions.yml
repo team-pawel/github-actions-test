@@ -4,6 +4,9 @@ on:
   #push: 
   pull_request:
     types: [opened, reopened, assigned, closed]
+  #schedule:
+    #- cron: "0 12 1 * *" # -> odpali joba raz w miesiacu pierwszego dnia o 12
+# https://crontab.guru/ -> strona zeby sprawdzic nasze cron job expressions
 
 jobs:
   run-github-action:
