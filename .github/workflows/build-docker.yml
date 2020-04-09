@@ -1,0 +1,28 @@
+# https://github.com/marketplace/actions/docker-push
+# powyzej link do repo jak uzywac
+
+name: Docker Push
+
+on: push
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: Docker Build & Push to GitHub Package
+        uses: opspresso/action-docker@master
+        with:
+          args: --docker
+        env:
+          USERNAME: ${{ secrets.GITHUB_USERNAME }}
+          PASSWORD: ${{ secrets.GITHUB_PERSONAL_TOKEN }}
+          REGISTRY: "docker.pkg.github.com"
+          DOCKERFILE: "Dockerfile"
+          IMAGE_NAME: "IMAGE_NAME"
+          TAG_NAME: "v0.0.1"
+          LATEST: "true"
