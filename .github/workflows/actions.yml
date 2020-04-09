@@ -1,1 +1,17 @@
 name: Actions Workflow
+
+on: [push]
+
+jobs:
+  run-github-action:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Simple JS Action
+        id: greet
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: Pawel
+      - name: Log Greeting Time
+        # to jest syntax zeby dostac sie do naszych poprzednich komend -> steps -> greet, bierzemy output,
+        # a time jest zmienna ktora mozemy znalezc w repo dla tej akcji
+        run: echo "${{ steps.greet.outputs.time }}"
