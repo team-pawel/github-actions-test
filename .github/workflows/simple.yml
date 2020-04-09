@@ -9,6 +9,13 @@ jobs:
       - name: echo a string
         run: echo "Hello World"
       - name: multiline script
+        # | -> pipe symbol pozwala tworzyć multi-line komendy
         run: |
           node -v
           npm -v
+      - name: python command
+        run: |
+          import platform
+          print
+          (platform.processor())
+        shell: python
