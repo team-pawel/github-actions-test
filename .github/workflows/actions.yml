@@ -1,6 +1,10 @@
 name: Actions Workflow
 
 on: 
+  # https://developer.github.com/v3/repos/#create-a-repository-dispatch-event - docsy do ponizszego
+  # to pozwala uruchomic build np post requestem wyslanym z postmana na adres naszego repo itp...
+  #repository_dispatch:
+    #types: [build]
   #push: 
   pull_request:
     types: [opened, reopened, assigned, closed]
